@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Button, ButtonContainer, Container } from './Sign.styles';
+import Form from '../Form/Form';
+import {
+  Button,
+  ButtonContainer,
+  Container,
+  FormContainer,
+} from './Sign.styles';
 
 const Sign = () => {
   const [selectedForm, setSelectedForm] = useState<boolean>(true);
@@ -20,6 +26,9 @@ const Sign = () => {
           Sign Up
         </Button>
       </ButtonContainer>
+      <FormContainer>
+        <Form boolean={selectedForm} />
+      </FormContainer>
     </Container>
   );
 };

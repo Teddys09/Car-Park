@@ -30,4 +30,13 @@ const Button = styled.button`
   margin-top: 20px;
 `;
 
-export { Container, Button, ButtonContainer };
+const FormContainer = styled.div`
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+
+export { Container, Button, ButtonContainer, FormContainer };
