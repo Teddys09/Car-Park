@@ -1,8 +1,9 @@
-const { User } = require('../mongo');
-const bcrypt = require('bcrypt');
-const jsonwebtoken = require('jsonwebtoken');
+import { User } from '../mongo';
+import bcrypt from 'bcrypt';
+import jsonwebtoken from 'jsonwebtoken';
+import { Request, Response } from 'express';
 
-async function signupUser(req, res) {
+async function signupUser(req: Request, res: Response) {
   const email = req.body.email;
   const password = req.body.password;
   const nickName = req.body.nickName;
@@ -10,6 +11,7 @@ async function signupUser(req, res) {
 
   const user = new User({
     email: email,
+
     nickName: nickName,
     password: hashedPassword,
   });
@@ -23,17 +25,17 @@ async function signupUser(req, res) {
     );
 }
 
-function hashPassword(password) {
+function hashPassword(password: string) {
   const saltRounds = 10;
   return bcrypt.hash(password, saltRounds);
 }
 
-async function loginUser(req, res) {
+async function loginUser(req: Request, res: Response) {
   try {
-    const email = req.body.email;
-    const password = req.body.password;
-    console.log(email, password);
-    const user = await User.findOne({ email: email });
+    const email: string = req.body.email;
+    const password: string = req.body.password;
+
+    const user: any = await User.findOne({ email: email });
 
     const valablePassword = await bcrypt.compare(password, user.password);
     if (!valablePassword) {
@@ -48,12 +50,12 @@ async function loginUser(req, res) {
     res.status(500).send({ message: 'Internal Error' });
   }
 }
-function createToken(email) {
-  const tokenPassword = process.env.TOKENPASSWORD;
+function createToken(email: string) {
+  const tokenPassword = process.env.TOKENPASSWORD!;
   const token = jsonwebtoken.sign({ email: email }, tokenPassword, {
     expiresIn: '24h',
   });
   return token;
 }
 
-module.exports = { signupUser, loginUser };
+export { signupUser, loginUser };

@@ -1,15 +1,15 @@
 require('dotenv').config();
-const express = require('express');
+import express from 'express';
 const app = express();
 const port = 5000;
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const path = require('path');
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import path from 'path';
 
 //Database
-require('./mongo');
+import('./mongo');
 //Controllers
-const { signupUser, loginUser } = require('./controllers/users');
+import { signupUser, loginUser } from './controllers/users';
 
 //Middleware
 app.use(cors());
@@ -17,7 +17,7 @@ app.use(express.json());
 
 app.use(bodyParser.json());
 
-const { scanUser } = require('./middleware/scanUser');
+// const { scanUser } = require('./middleware/scanUser');
 
 //Routes
 
