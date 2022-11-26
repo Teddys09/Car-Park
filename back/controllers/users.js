@@ -32,6 +32,7 @@ async function loginUser(req, res) {
   try {
     const email = req.body.email;
     const password = req.body.password;
+    console.log(email, password);
     const user = await User.findOne({ email: email });
 
     const valablePassword = await bcrypt.compare(password, user.password);

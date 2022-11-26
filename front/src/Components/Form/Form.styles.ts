@@ -6,6 +6,9 @@ const FormStyle = styled.form`
   align-items: center;
   justify-content: center;
   width: 90%;
+  @media (min-width: 768px) {
+    width: 400px;
+  }
 `;
 
 const Input = styled.input`

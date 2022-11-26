@@ -12,7 +12,6 @@ type IForm = {
   password: string;
 };
 const Form = (boolean: IBoolean) => {
-  const [formData, setFormData] = useState<IForm>();
   const [regexEmail, setRegexEmail] = useState<boolean>(true);
   const [regexPassword, setRegexPassword] = useState<boolean>(true);
   const [regexNickName, setRegexNickName] = useState<boolean>(true);
@@ -25,10 +24,11 @@ const Form = (boolean: IBoolean) => {
     e.preventDefault();
 
     if (boolean.boolean) {
-      setFormData({
+      const formData: IForm = {
         email: e.target.email.value,
         password: e.target.password.value,
-      });
+      };
+
       axios
         .post('http://localhost:5000/api/auth/signin', formData)
         .then((res) => {
@@ -36,11 +36,12 @@ const Form = (boolean: IBoolean) => {
           navigate('/Park');
         });
     } else {
-      setFormData({
+      const formData: IForm = {
         email: e.target.email.value,
         nickName: e.target.nickName.value,
         password: e.target.password.value,
-      });
+      };
+
       axios
         .post('http://localhost:5000/api/auth/signup', formData)
         .then((res) => {
@@ -138,7 +139,7 @@ const Form = (boolean: IBoolean) => {
           type="password"
           name="password"
           placeholder="Password"
-          autoComplete="off"
+          autoComplete="new-password"
           onInput={(e) => handleRegex(e)}
         />
         {regexPassword === false ? (
@@ -151,7 +152,7 @@ const Form = (boolean: IBoolean) => {
           type="password"
           name="confirm-password"
           placeholder="Confirm Password"
-          autoComplete="off"
+          autoComplete="new-password"
           onInput={(e) => handleRegex(e)}
         />
         {regexConfirmPassword === false ? (
