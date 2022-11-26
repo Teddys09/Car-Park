@@ -22,7 +22,7 @@ const HeaderContainer = styled.header`
 `;
 const ImageHeader = styled.img`
   width: 10vh;
-  height: 100%;
+  height: 70%;
   background: transparent;
 `;
 
