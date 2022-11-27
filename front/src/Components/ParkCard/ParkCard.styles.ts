@@ -27,7 +27,7 @@ const Location = styled.h2`
   padding: 5px;
 `;
 
-const Rating = styled.div`
+const RatingContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,7 +73,7 @@ export {
   Name,
   Image,
   Location,
-  Rating,
+  RatingContainer,
   Description,
   Space,
   PropertyContainer,

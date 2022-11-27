@@ -7,7 +7,7 @@ import {
   PropertyContainer,
   PropertyImg,
   PropertyTitle,
-  Rating,
+  RatingContainer,
   Space,
 } from './ParkCard.styles';
 import ParkImage from '../../assets/images/parking.jpg';
@@ -15,6 +15,7 @@ import Camera from '../../assets/logo/camera-solid.svg';
 import Guard from '../../assets/logo/person-military-pointing-solid.svg';
 import Lightning from '../../assets/logo/bolt-lightning-solid.svg';
 import { useSelector } from 'react-redux';
+import Rating from './Rating';
 
 type IParkCard = {
   _id: string;
@@ -40,7 +41,9 @@ const ParkCard = () => {
           <Image src={ParkImage} alt="parking" />
           <Location>Location: {park.location}</Location>
           <Space>Available space: {park.space}</Space>
-          <Rating>Rating: {park.rating}</Rating>
+          <RatingContainer>
+            <Rating rating={park.rating} />
+          </RatingContainer>
           <PropertyContainer>
             <PropertyTitle>Feature(s) :</PropertyTitle>
             {park.property.camera ? (
