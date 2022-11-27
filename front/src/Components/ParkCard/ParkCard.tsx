@@ -42,7 +42,7 @@ const ParkCard = () => {
           <Space>Available space: {park.space}</Space>
           <Rating>Rating: {park.rating}</Rating>
           <PropertyContainer>
-            <PropertyTitle>Options :</PropertyTitle>
+            <PropertyTitle>Feature(s) :</PropertyTitle>
             {park.property.camera ? (
               <PropertyImg src={Camera} alt="camera" />
             ) : null}
