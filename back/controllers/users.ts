@@ -18,7 +18,13 @@ async function signupUser(req: Request, res: Response) {
   user
     .save()
     .then(() => {
-      res.status(201).send({ message: 'Signup with success' });
+      res
+        .status(201)
+        .send({
+          userId: user?._id,
+          token: createToken(email),
+          role: user?.role,
+        });
     })
     .catch((err) =>
       res.status(409).send({ message: "Problème d'enregistrement ! " + err })

@@ -31,7 +31,13 @@ function signupUser(req, res) {
         user
             .save()
             .then(() => {
-            res.status(201).send({ message: 'Signup with success' });
+            res
+                .status(201)
+                .send({
+                userId: user === null || user === void 0 ? void 0 : user._id,
+                token: createToken(email),
+                role: user === null || user === void 0 ? void 0 : user.role,
+            });
         })
             .catch((err) => res.status(409).send({ message: "Problème d'enregistrement ! " + err }));
     });

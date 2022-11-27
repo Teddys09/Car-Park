@@ -35,7 +35,6 @@ const Form = (boolean: IBoolean) => {
       axios
         .post('http://localhost:5000/api/auth/signin', formData)
         .then((res) => {
-          console.log(res.data);
           dispatch(setToken(res.data.token));
           dispatch(setIsLogged(true));
           dispatch(setRole(res.data.role));
@@ -54,10 +53,12 @@ const Form = (boolean: IBoolean) => {
       axios
         .post('http://localhost:5000/api/auth/signup', formData)
         .then((res) => {
-          console.log(res);
-
-          navigate('/Home');
+          dispatch(setToken(res.data.token));
+          dispatch(setIsLogged(true));
+          dispatch(setRole(res.data.role));
+          navigate('/Park');
         })
+
         .catch((err) => {
           console.log(err);
         });
