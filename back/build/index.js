@@ -36,6 +36,8 @@ const body_parser_1 = __importDefault(require("body-parser"));
 Promise.resolve().then(() => __importStar(require('./mongo')));
 //Controllers
 const users_1 = require("./controllers/users");
+const scanUser_1 = require("./middleware/scanUser");
+const park_1 = require("./middleware/park");
 //Middleware
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
@@ -44,6 +46,7 @@ app.use(body_parser_1.default.json());
 //Routes
 app.post('/api/auth/signup', users_1.signupUser);
 app.post('/api/auth/signin', users_1.loginUser);
+app.get('/api/Park/all', scanUser_1.scanUser, park_1.getAllParks);
 app.get('/', (req, res) => res.send('hello world'));
 //Listen
 app.listen(port, () => console.log('Listening on port ', port));

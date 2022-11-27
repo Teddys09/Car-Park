@@ -15,4 +15,4 @@ function scanUser(req: Request, res: Response, next: NextFunction) {
   });
 }
 
-module.exports = { scanUser };
+export { scanUser };

@@ -17,4 +17,14 @@ userSchema.plugin(uniqueValidator);
 
 const User = mongoose.model('User', userSchema);
 
-export { mongoose, User };
+const parkSchema = new mongoose.Schema({
+  name: { type: String, required: true, unique: true },
+  description: { type: String, required: true },
+  location: { type: String, required: true },
+  rating: { type: Number, required: true },
+});
+parkSchema.plugin(uniqueValidator);
+
+const Park = mongoose.model('Park', parkSchema);
+
+export { mongoose, User, Park };

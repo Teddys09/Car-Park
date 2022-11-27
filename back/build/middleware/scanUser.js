@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.scanUser = void 0;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
 function scanUser(req, res, next) {
     const header = req.header('Authorization');
@@ -17,4 +18,4 @@ function scanUser(req, res, next) {
         next();
     });
 }
-module.exports = { scanUser };
+exports.scanUser = scanUser;
