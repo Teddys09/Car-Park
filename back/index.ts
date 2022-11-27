@@ -11,7 +11,7 @@ import('./mongo');
 //Controllers
 import { signupUser, loginUser } from './controllers/users';
 import { scanUser } from './middleware/scanUser';
-import { getAllParks } from './middleware/park';
+import { getAllParks, addNewPark } from './middleware/park';
 
 //Middleware
 app.use(cors());
@@ -26,6 +26,7 @@ app.use(bodyParser.json());
 app.post('/api/auth/signup', signupUser);
 app.post('/api/auth/signin', loginUser);
 app.get('/api/park/all', scanUser, getAllParks);
+app.post('/api/park/add', scanUser, addNewPark);
 
 app.get('/', (req, res) => res.send('hello world'));
 
