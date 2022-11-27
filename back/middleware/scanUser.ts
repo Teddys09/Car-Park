@@ -5,7 +5,8 @@ function scanUser(req: Request, res: Response, next: NextFunction) {
   const header = req.header('Authorization');
 
   if (header == null) return res.status(403).send({ message: 'Invalid' });
-  const token = header.split(' ')[1];
+  const token = header;
+
   if (token == null)
     return res.status(403).send({ message: "token can't be null" });
 

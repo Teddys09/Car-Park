@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setToken, setIsLogged, setRole } from '../../utils/store/store';
 
 import { Button, Error, FormStyle, Input } from './Form.styles';
 import axios from 'axios';
@@ -19,6 +21,7 @@ const Form = (boolean: IBoolean) => {
     useState<boolean>(true);
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -32,8 +35,14 @@ const Form = (boolean: IBoolean) => {
       axios
         .post('http://localhost:5000/api/auth/signin', formData)
         .then((res) => {
-          console.log(res);
+          console.log(res.data);
+          dispatch(setToken(res.data.token));
+          dispatch(setIsLogged(true));
+          dispatch(setRole(res.data.role));
           navigate('/Park');
+        })
+        .catch((err) => {
+          console.log(err);
         });
     } else {
       const formData: IForm = {
@@ -46,7 +55,11 @@ const Form = (boolean: IBoolean) => {
         .post('http://localhost:5000/api/auth/signup', formData)
         .then((res) => {
           console.log(res);
-          navigate('/Park');
+
+          navigate('/Home');
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
   };

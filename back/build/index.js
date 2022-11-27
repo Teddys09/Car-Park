@@ -46,7 +46,7 @@ app.use(body_parser_1.default.json());
 //Routes
 app.post('/api/auth/signup', users_1.signupUser);
 app.post('/api/auth/signin', users_1.loginUser);
-app.get('/api/Park/all', scanUser_1.scanUser, park_1.getAllParks);
+app.get('/api/park/all', scanUser_1.scanUser, park_1.getAllParks);
 app.get('/', (req, res) => res.send('hello world'));
 //Listen
 app.listen(port, () => console.log('Listening on port ', port));

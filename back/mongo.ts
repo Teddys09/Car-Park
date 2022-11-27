@@ -12,6 +12,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   nickName: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  role: { type: String, required: true },
 });
 userSchema.plugin(uniqueValidator);
 
@@ -22,6 +23,7 @@ const parkSchema = new mongoose.Schema({
   description: { type: String, required: true },
   location: { type: String, required: true },
   rating: { type: Number, required: true },
+  space: { type: Number, required: true },
 });
 parkSchema.plugin(uniqueValidator);
 

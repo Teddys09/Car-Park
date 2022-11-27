@@ -10,7 +10,7 @@ const Home = () => {
         <Title>Park became easy !</Title>
         <Text>
           Check if there is some available space for your car then check-in and
-          Voila its thats easy !
+          Voila its that easy !
         </Text>
       </Info>
     </Container>

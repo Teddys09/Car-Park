@@ -11,7 +11,7 @@ async function signupUser(req: Request, res: Response) {
 
   const user = new User({
     email: email,
-
+    role: 'user',
     nickName: nickName,
     password: hashedPassword,
   });
@@ -44,7 +44,7 @@ async function loginUser(req: Request, res: Response) {
     }
 
     const token = createToken(email);
-    res.status(200).send({ userId: user?._id, token: token });
+    res.status(200).send({ userId: user?._id, token: token, role: user?.role });
   } catch (err) {
     console.log(err);
     res.status(500).send({ message: 'Internal Error' });

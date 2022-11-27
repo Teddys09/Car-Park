@@ -24,6 +24,7 @@ function signupUser(req, res) {
         const hashedPassword = yield hashPassword(password);
         const user = new mongo_1.User({
             email: email,
+            role: 'user',
             nickName: nickName,
             password: hashedPassword,
         });
@@ -52,7 +53,7 @@ function loginUser(req, res) {
                 return;
             }
             const token = createToken(email);
-            res.status(200).send({ userId: user === null || user === void 0 ? void 0 : user._id, token: token });
+            res.status(200).send({ userId: user === null || user === void 0 ? void 0 : user._id, token: token, role: user === null || user === void 0 ? void 0 : user.role });
         }
         catch (err) {
             console.log(err);

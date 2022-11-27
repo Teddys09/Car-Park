@@ -18,6 +18,7 @@ const userSchema = new mongoose_1.default.Schema({
     email: { type: String, required: true, unique: true },
     nickName: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    role: { type: String, required: true },
 });
 userSchema.plugin(uniqueValidator);
 const User = mongoose_1.default.model('User', userSchema);
@@ -27,6 +28,7 @@ const parkSchema = new mongoose_1.default.Schema({
     description: { type: String, required: true },
     location: { type: String, required: true },
     rating: { type: Number, required: true },
+    space: { type: Number, required: true },
 });
 parkSchema.plugin(uniqueValidator);
 const Park = mongoose_1.default.model('Park', parkSchema);

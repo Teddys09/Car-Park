@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 
 app.post('/api/auth/signup', signupUser);
 app.post('/api/auth/signin', loginUser);
-app.get('/api/Park/all', scanUser, getAllParks);
+app.get('/api/park/all', scanUser, getAllParks);
 
 app.get('/', (req, res) => res.send('hello world'));
 
