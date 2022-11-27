@@ -17,7 +17,7 @@ import Lightning from '../../assets/logo/bolt-lightning-solid.svg';
 import { useSelector } from 'react-redux';
 
 type IParkCard = {
-  id: string;
+  _id: string;
   name: string;
   location: string;
   rating: number;
@@ -31,22 +31,27 @@ type IParkCard = {
 
 const ParkCard = () => {
   const parks = useSelector((state: any) => state.parks);
-  console.log(parks);
 
   return (
     <>
       {parks.map((park: IParkCard) => (
-        <Container key={park.id}>
+        <Container key={park?._id}>
           <Name>{park.name}</Name>
           <Image src={ParkImage} alt="parking" />
-          <Location>{park.location}</Location>
-          <Space>{park.space}</Space>
-          <Rating>{park.rating}</Rating>
+          <Location>Location: {park.location}</Location>
+          <Space>Available space: {park.space}</Space>
+          <Rating>Rating: {park.rating}</Rating>
           <PropertyContainer>
             <PropertyTitle>Options :</PropertyTitle>
-            <PropertyImg src={Camera} alt="camera" />
-            <PropertyImg src={Guard} alt="guard" />
-            <PropertyImg src={Lightning} alt="lightning" />
+            {park.property.camera ? (
+              <PropertyImg src={Camera} alt="camera" />
+            ) : null}
+            {park.property.security ? (
+              <PropertyImg src={Guard} alt="guard" />
+            ) : null}
+            {park.property.charging ? (
+              <PropertyImg src={Lightning} alt="lightning" />
+            ) : null}
           </PropertyContainer>
         </Container>
       ))}
