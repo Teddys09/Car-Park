@@ -1,19 +1,12 @@
 import styled from 'styled-components';
 
-const Section = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 20px;
-`;
-
-const Container = styled.div`
+const Container = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+  margin-top: 20px;
 `;
 
-export { Section, Container };
+export { Container };

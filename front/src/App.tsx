@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home';
 import Footer from './Components/Footer/Footer';
 import { Provider } from 'react-redux';
 import { store } from './utils/store/store';
+import Parks from './Pages/Parks/Parks';
 import Park from './Pages/Park/Park';
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="*" element={<Home />} />
           <Route path="/" element={<Home />} />
+          <Route path="/Parks" element={<Parks />} />
           <Route path="/Park" element={<Park />} />
         </Routes>
         <Footer />

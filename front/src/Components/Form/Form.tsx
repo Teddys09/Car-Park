@@ -38,7 +38,7 @@ const Form = (boolean: IBoolean) => {
           dispatch(setToken(res.data.token));
           dispatch(setIsLogged(true));
           dispatch(setRole(res.data.role));
-          navigate('/Park');
+          navigate('/Parks');
         })
         .catch((err) => {
           console.log(err);
@@ -56,7 +56,7 @@ const Form = (boolean: IBoolean) => {
           dispatch(setToken(res.data.token));
           dispatch(setIsLogged(true));
           dispatch(setRole(res.data.role));
-          navigate('/Park');
+          navigate('/Parks');
         })
 
         .catch((err) => {

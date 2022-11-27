@@ -16,6 +16,7 @@ import Guard from '../../assets/logo/person-military-pointing-solid.svg';
 import Lightning from '../../assets/logo/bolt-lightning-solid.svg';
 import { useSelector } from 'react-redux';
 import Rating from './Rating';
+import { useNavigate } from 'react-router-dom';
 
 type IParkCard = {
   _id: string;
@@ -32,11 +33,15 @@ type IParkCard = {
 
 const ParkCard = () => {
   const parks = useSelector((state: any) => state.parks);
+  const navigate = useNavigate();
 
   return (
     <>
       {parks.map((park: IParkCard) => (
-        <Container key={park?._id}>
+        <Container
+          key={park?._id}
+          onClick={() => navigate('/Park?_id=' + park._id)}
+        >
           <Name>{park.name}</Name>
           <Image src={ParkImage} alt="parking" />
           <Location>Location: {park.location}</Location>

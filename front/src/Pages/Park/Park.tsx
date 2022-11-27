@@ -1,24 +1,20 @@
 import React from 'react';
-import { Container, Section } from './Park.styles';
+import { Container } from './Park.styles';
 import { useSelector } from 'react-redux';
-import { GetAllParks } from '../../utils/useFetch/Fetch';
-import AddPark from '../../Components/AddPark/AddPark';
-import ParkCard from '../../Components/ParkCard/ParkCard';
 
 const Park = () => {
-  const token = useSelector((state: any) => state.token);
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const idInUrl = urlSearchParams.get('_id') ?? '';
 
-  GetAllParks(token);
-  const role = useSelector((state: any) => state.role);
+  // convert id to number
+  //const id = parseInt(idInUrl);
+  console.log(idInUrl);
 
-  return (
-    <Section>
-      <Container>
-        {role === 'admin' ? <AddPark /> : null}
-        <ParkCard />
-      </Container>
-    </Section>
-  );
+  const parks = useSelector((state: any) => state.parks);
+  const park = parks.filter((park: any) => park._id === idInUrl);
+  console.log(park);
+
+  return <Container></Container>;
 };
 
 export default Park;

@@ -28,7 +28,7 @@ const Header = () => {
 
       <LinkContainer>
         <LinkHeader to="/Home">Home</LinkHeader>
-        <LinkHeader to="/Park">Park</LinkHeader>
+        <LinkHeader to="/Parks">Park</LinkHeader>
       </LinkContainer>
       <NavIconContainer
         onClick={() => handleClick()}
@@ -45,7 +45,7 @@ const Header = () => {
           Home
         </LinkHeader>
         <LinkHeader
-          to="/Park"
+          to="/Parks"
           onClick={() => handleClick()}
           className={clicked ? 'block' : ''}
         >
