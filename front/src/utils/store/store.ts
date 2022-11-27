@@ -4,12 +4,14 @@ type IinitialState = {
   isLogged: boolean;
   token: string;
   role: string;
+  parks: object[];
 };
 
 const initialState: IinitialState = {
   isLogged: false,
   token: '',
   role: '',
+  parks: [],
 };
 
 const data = createSlice({
@@ -25,10 +27,13 @@ const data = createSlice({
     setRole(state, action: PayloadAction<string>) {
       state.role = action.payload;
     },
+    setParks(state, action: PayloadAction<object[]>) {
+      state.parks = action.payload;
+    },
   },
 });
 
-export const { setToken, setIsLogged, setRole } = data.actions;
+export const { setToken, setIsLogged, setRole, setParks } = data.actions;
 
 export const createStore = () =>
   configureStore({

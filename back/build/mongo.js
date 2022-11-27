@@ -25,10 +25,10 @@ const User = mongoose_1.default.model('User', userSchema);
 exports.User = User;
 const parkSchema = new mongoose_1.default.Schema({
     name: { type: String, required: true, unique: true },
-    description: { type: String, required: true },
     location: { type: String, required: true },
     rating: { type: Number, required: true },
     space: { type: Number, required: true },
+    property: { type: Object, required: true },
 });
 parkSchema.plugin(uniqueValidator);
 const Park = mongoose_1.default.model('Park', parkSchema);

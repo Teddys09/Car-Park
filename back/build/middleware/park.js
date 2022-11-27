@@ -21,16 +21,16 @@ function addNewPark(req, res, next) {
     const park = new mongo_1.Park({
         _id: new mongoose_1.default.Types.ObjectId(),
         name: req.body.name,
-        description: req.body.description,
         location: req.body.location,
         rating: req.body.rating,
         space: req.body.space,
+        property: req.body.property,
     });
     park
         .save()
         .then(() => {
         res.status(201).send({ message: 'Park added with success' });
     })
-        .catch((err) => res.status(409).send({ message: "Problème d'enregistrement ! " + err }));
+        .catch((err) => res.status(409).send({ message: 'Register issue ! ' + err }));
 }
 exports.addNewPark = addNewPark;

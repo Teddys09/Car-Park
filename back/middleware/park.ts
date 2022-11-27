@@ -18,10 +18,11 @@ function addNewPark(req: Request, res: Response, next: NextFunction) {
   const park = new Park({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
-    description: req.body.description,
+
     location: req.body.location,
     rating: req.body.rating,
     space: req.body.space,
+    property: req.body.property,
   });
 
   park
@@ -30,7 +31,7 @@ function addNewPark(req: Request, res: Response, next: NextFunction) {
       res.status(201).send({ message: 'Park added with success' });
     })
     .catch((err) =>
-      res.status(409).send({ message: "Problème d'enregistrement ! " + err })
+      res.status(409).send({ message: 'Register issue ! ' + err })
     );
 }
 
