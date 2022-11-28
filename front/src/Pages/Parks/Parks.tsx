@@ -6,18 +6,35 @@ import AddPark from '../../Components/AddPark/AddPark';
 import ParkCard from '../../Components/ParkCard/ParkCard';
 import { GetAllParks } from '../../utils/useFetch/Fetch';
 
+type IParkCard = {
+  _id: string;
+  name: string;
+  location: string;
+  rating: number;
+  space: number;
+  property: {
+    camera: boolean;
+    security: boolean;
+    charging: boolean;
+  };
+};
+
 const Park = () => {
   const token = useSelector((state: any) => state.token);
-
-  GetAllParks(token);
+  const parks = useSelector((state: any) => state.parks);
 
   const role = useSelector((state: any) => state.role);
+  if (!parks.length) {
+    GetAllParks(token);
+  }
 
   return (
     <Section>
       <Container>
         {role === 'admin' ? <AddPark /> : null}
-        <ParkCard />
+        {parks.map((park: IParkCard) => (
+          <ParkCard key={park._id} {...park} />
+        ))}
       </Container>
     </Section>
   );

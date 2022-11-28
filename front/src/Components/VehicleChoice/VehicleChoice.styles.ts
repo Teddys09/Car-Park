@@ -1,5 +1,14 @@
 import styled from 'styled-components';
 
+const GlobalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
+
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -23,4 +32,17 @@ const VehicleImg = styled.img`
   height: 100%;
 `;
 
-export { Container, VehicleContainer, VehicleImg };
+const FormParkTitle = styled.h2`
+  margin-top: 20px;
+  font-size: 26px;
+  font-weight: 600;
+  padding: 5px;
+`;
+
+export {
+  GlobalContainer,
+  Container,
+  VehicleContainer,
+  VehicleImg,
+  FormParkTitle,
+};
