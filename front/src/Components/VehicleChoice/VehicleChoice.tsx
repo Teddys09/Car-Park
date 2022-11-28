@@ -57,16 +57,3 @@ const VehicleChoice = (park: IPark) => {
 };
 
 export default VehicleChoice;
-//  Container,
-//   VehicleContainer,
-//   VehicleImg,
-//   InfoContainer,
-//   Name,
-//   Image,
-//   Location,
-//   RatingContainer,
-//   Space,
-//   Description,
-//   PropertyContainer,
-//   PropertyImg,
-//   PropertyTitle,

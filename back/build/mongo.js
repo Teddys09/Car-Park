@@ -28,6 +28,7 @@ const parkSchema = new mongoose_1.default.Schema({
     location: { type: String, required: true },
     rating: { type: Number, required: true },
     space: { type: Number, required: true },
+    maxSpace: { type: Number, required: true },
     property: { type: Object, required: true },
 });
 parkSchema.plugin(uniqueValidator);

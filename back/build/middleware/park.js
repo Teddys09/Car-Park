@@ -10,7 +10,12 @@ function getAllParks(req, res, next) {
     console.log('getAllParks');
     mongo_1.Park.find({})
         .then((parks) => {
-        res.send(parks);
+        if (parks.length > 0) {
+            res.send(parks);
+        }
+        else {
+            res.send({ message: 'No park found' });
+        }
     })
         .catch((err) => {
         res.status(500).send(err);
@@ -24,6 +29,7 @@ function addNewPark(req, res, next) {
         location: req.body.location,
         rating: req.body.rating,
         space: req.body.space,
+        maxSpace: req.body.maxSpace,
         property: req.body.property,
     });
     park

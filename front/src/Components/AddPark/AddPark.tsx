@@ -29,6 +29,7 @@ type IFormData = {
   location: string;
   rating: number;
   space: number;
+  maxSpace: number;
 };
 
 const AddPark = () => {
@@ -48,6 +49,7 @@ const AddPark = () => {
       location: e.target.location.value,
       rating: Number(e.target.rating.value),
       space: Number(e.target.space.value),
+      maxSpace: Number(e.target.space.value),
     };
     console.log(formData);
 

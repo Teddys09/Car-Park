@@ -24,7 +24,7 @@ const Park = () => {
   const parks = useSelector((state: any) => state.parks);
 
   const role = useSelector((state: any) => state.role);
-  if (!parks.length) {
+  if (parks.length === 0) {
     GetAllParks(token);
   }
 
@@ -32,9 +32,11 @@ const Park = () => {
     <Section>
       <Container>
         {role === 'admin' ? <AddPark /> : null}
-        {parks.map((park: IParkCard) => (
-          <ParkCard key={park._id} {...park} />
-        ))}
+        {!parks.length ? (
+          <h1>{parks.message}</h1>
+        ) : (
+          parks.map((park: IParkCard) => <ParkCard key={park._id} {...park} />)
+        )}
       </Container>
     </Section>
   );
