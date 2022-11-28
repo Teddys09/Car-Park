@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container } from './Park.styles';
 import { useSelector } from 'react-redux';
+import VehicleChoice from '../../Components/VehicleChoice/VehicleChoice';
 
 const Park = () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
@@ -11,10 +12,14 @@ const Park = () => {
   console.log(idInUrl);
 
   const parks = useSelector((state: any) => state.parks);
-  const park = parks.filter((park: any) => park._id === idInUrl);
-  console.log(park);
+  const parkFilter = parks.filter((park: any) => park._id === idInUrl);
+  const park = parkFilter[0];
 
-  return <Container></Container>;
+  return (
+    <Container>
+      <VehicleChoice {...park} />
+    </Container>
+  );
 };
 
 export default Park;
